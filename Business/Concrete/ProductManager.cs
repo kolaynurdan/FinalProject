@@ -31,7 +31,11 @@ namespace Business.Concrete
 
         public IDataResult<List<Product>> GetAll()
         {
-            return new DataResult<List<Product>>(_productDal.GetAll(), true, "Ürünler listelendi.");
+            if (DateTime.Now.Hour==22)
+            {
+                return new ErrorResult();
+            }
+            return new SuccesDataResult<List<Product>>(_productDal.GetAll(), true, "Ürünler listelendi.");
         }
 
         public List<Product> GetAllByCategoryId(int id)
