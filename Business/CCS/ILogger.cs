@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Business.CCS
 {
-    public interface ILogger
-    {
-        void Log();
-    }
+   public interface ILogger
+   {
+       void Log();
+   }
 }

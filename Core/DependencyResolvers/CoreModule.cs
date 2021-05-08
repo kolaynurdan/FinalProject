@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Text;
 using Core.CrossCuttingConcerns.Caching;
 using Core.CrossCuttingConcerns.Caching.Microsoft;
@@ -12,12 +11,13 @@ namespace Core.DependencyResolvers
 {
     public class CoreModule : ICoreModule
     {
-        public void Load(IServiceCollection services)
+        public void Load(IServiceCollection serviceCollection)
         {
-            services.AddMemoryCache();
-            services.AddSingleton<ICacheManager, MemoryCacheManager>();
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddSingleton<Stopwatch>();
+            serviceCollection.AddMemoryCache();
+            serviceCollection.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            serviceCollection.AddSingleton<ICacheManager, MemoryCacheManager>();
+
+
         }
     }
 }

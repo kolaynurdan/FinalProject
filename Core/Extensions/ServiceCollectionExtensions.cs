@@ -6,17 +6,17 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Core.Extensions
 {
-    public static class ServiceCollectionExtensions
-    {
-        public static IServiceCollection AddDependencyResolvers(this IServiceCollection services,
-            ICoreModule[] modules)
+  public static class ServiceCollectionExtensions
+    { 
+        public static IServiceCollection AddDependencyResolvers
+            (this IServiceCollection serviceCollection, ICoreModule[] modules)
         {
             foreach (var module in modules)
             {
-                module.Load(services);
+                module.Load(serviceCollection);
             }
 
-            return ServiceTool.Create(services);
+            return ServiceTool.Create(serviceCollection);
         }
     }
 }
